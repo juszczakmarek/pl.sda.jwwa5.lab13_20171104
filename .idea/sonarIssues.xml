@@ -58,7 +58,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/test/pl/sda/wwa5/lab/ShopTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/test/pl/sda/wwa5/lab/WarehouseDaoTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/test/pl/sda/wwa5/lab/WarehouseTest.java">
           <value>
             <set />
           </value>
