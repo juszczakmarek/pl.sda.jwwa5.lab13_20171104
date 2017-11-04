@@ -1,0 +1,70 @@
+Sklep
+- dostępne produkty
+- obsługa dostaw
+- obsluga zakupów
+- zwroty / reklamacje
+- zapis stanu sklepu
+
+Produkt
+- id
+- cena
+- nazwa
+
+Magazyn
+- ilości produktów
+
+Dostawa
+- dostawca -> produkt -> ilość
+
+Zakup
+- koszyk -> zamówienie
+
+Zamówienie
+- ilość produktów
+- cena produktów
+- cena końcowa
+
+Zwrot
+-
+
+Reklamacja
+-
+
+Sposób uruchamiania:
+- z linii poleceń sklep.jar
+    - opcja "Pokaż produkty"
+    - wyświetla się raport w formacie
+        id | nazwa | cena
+
+    - zakupy realizujemy w następujący sposób:
+        - sklep.jar -> kup -> podaje identyfikator zamówienia -> podaje identyfikator produktu -> podaje ilość sztuk
+
+        - realizacja zamówienia
+            - sklep.jar -> zrealizuj zamówienie -> idZamówienia
+
+Klasy
+    Runner
+        -
+
+    DAO (Data Access Object)
+        -
+
+    Sklep
+        - listaProduktow List<Produkt>
+        - magazyn
+
+    Produkt
+        - int id
+        - String nazwa
+        - BigDecimal cena
+
+    Magazyn
+
+    Zamówienie
+
+    Klient
+
+    Dostawca
+
+    Kasa
+
