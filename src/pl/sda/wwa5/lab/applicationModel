@@ -1,3 +1,19 @@
+Homework
+- jak przeczytać bitowo cały plik używając bufora 10 elementowego (File + InputStream)
+- operacje CRUD
+    C - create
+    R - read
+    U - update
+    D - delete
+
+Uruchamianie:
+java -cp .;src/ nazwaPakietu/nazwaKlasy
+Struktura polecenia:
+-cp = class path
+; = separator dodatkowych ścieżek gdzie ma szukać
+src/ = pokazuje nadrzędny katalog dla gdzie jest classpath
+
+
 Sklep
 - dostępne produkty
 - obsługa dostaw
@@ -47,7 +63,23 @@ Klasy
         -
 
     DAO (Data Access Object)
-        -
+        - ZAPIS
+            - Stan produtków w magazynie
+            - Zamówienia
+            - Historia dostaw
+            - Bazę produktów
+            - Stan kasy
+        - ODCZYT
+            - porządek wyszukiwania
+            (------)
+            File
+                Strumienie
+                Zapis / Odczyt
+                Tryby odczytu - warstwy:
+                    binarny (01010101010)
+                    znakowy (ciąg znaków zakończony '\n')
+                    linie (z tego będziemy korzystać)
+            (------)
 
     Sklep
         - listaProduktow List<Produkt>
@@ -67,4 +99,3 @@ Klasy
     Dostawca
 
     Kasa
-
