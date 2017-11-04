@@ -3,6 +3,7 @@ package pl.sda.wwa5.lab;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pl.sda.wwa5.lab.converter.ProductConverter;
 
 import java.math.BigDecimal;
 

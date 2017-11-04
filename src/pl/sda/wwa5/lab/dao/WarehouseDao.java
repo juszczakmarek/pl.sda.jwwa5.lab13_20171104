@@ -1,4 +1,7 @@
-package pl.sda.wwa5.lab;
+package pl.sda.wwa5.lab.dao;
+
+import pl.sda.wwa5.lab.Product;
+import pl.sda.wwa5.lab.converter.ProductConverter;
 
 import java.io.*;
 import java.util.ArrayList;

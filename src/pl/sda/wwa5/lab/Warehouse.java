@@ -1,5 +1,7 @@
 package pl.sda.wwa5.lab;
 
+import pl.sda.wwa5.lab.dao.WarehouseDao;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 
