@@ -38,7 +38,7 @@ public class OrderConverter {
         stringBuilder.append(",");
         stringBuilder.append(order.getOrderFullfillDate());
         stringBuilder.append(",");
-        stringBuilder.append(order.getTotalAmount());
+        stringBuilder.append(order.getTotalAmount()==null ? "" : order.getTotalAmount() );
 
         //Metoda 1
         for (Map.Entry<Product,Integer> currentEntry : order.getCart().entrySet()) {

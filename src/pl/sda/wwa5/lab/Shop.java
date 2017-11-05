@@ -11,8 +11,9 @@ public class Shop {
     private Warehouse warehouse;
     private OrdersDao ordersDao;
 
-    public Shop(Warehouse warehouse) {
+    public Shop(Warehouse warehouse, OrdersDao ordersDao) {
         this.warehouse = warehouse;
+        this.ordersDao = ordersDao;
     }
 
     public List<Product> showProducts() {

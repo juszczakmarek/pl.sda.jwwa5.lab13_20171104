@@ -3,13 +3,8 @@ package pl.sda.wwa5.lab.dao;
 import pl.sda.wwa5.lab.Order;
 import pl.sda.wwa5.lab.converter.OrderConverter;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
 
 public class OrdersDao {
 
@@ -67,7 +62,43 @@ public class OrdersDao {
     }
 
     public void writeOrderToFile(Order order) {
+        BufferedReader bufferedReader = getBufferedReader();
+        List<Order> allExistingOrders = new ArrayList<>();
 
+        try {
+            String line = bufferedReader.readLine();
+            boolean thisIsNewOrder = true;
+            while (line != null) {
+                Order orderExistingInFile = orderConverter.parseLineToOrder(line);
+                if (orderExistingInFile.getId()==order.getId()) {
+                    allExistingOrders.add(order);
+                    thisIsNewOrder = false;
+                } else {
+                    allExistingOrders.add(orderExistingInFile);
+                }
+            }
 
+            if (thisIsNewOrder) {
+                allExistingOrders.add(0,order);
+            }
+            bufferedReader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        File outputFile = new File(fileName);
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(outputFile));
+            for (Order currentOrder : allExistingOrders) {
+                String orderToBeWritten = orderConverter.parseOrderToLine(currentOrder);
+                outputStreamWriter.append(orderToBeWritten);
+            }
+            outputStreamWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -32,7 +32,7 @@ public class Runner {
             System.exit(1);
         }
         Warehouse warehouse = new Warehouse(warehouseDao);
-        Shop shop = new Shop(warehouse);
+        Shop shop = new Shop(warehouse, ordersDao);
 
         if (args[0].equals("pokazprodukty")) {
             List<Product> products = shop.showProducts();
@@ -47,6 +47,7 @@ public class Runner {
             int quantity = Integer.valueOf(args[2]);
             int orderId = -1;
             Order order = null;
+
             if (args.length==4) {
                 orderId = Integer.valueOf(args[3]);
                 Optional<Order> optionalOrderId = ordersDao.findByOrderId(orderId);
