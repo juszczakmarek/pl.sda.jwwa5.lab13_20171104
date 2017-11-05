@@ -78,6 +78,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/pl/sda/wwa5/lab/dao/IdGenerator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/pl/sda/wwa5/lab/dao/OrdersDao.java">
           <value>
             <set />

@@ -1,6 +1,7 @@
 package pl.sda.wwa5.lab;
 
 import pl.sda.wwa5.lab.converter.ProductConverter;
+import pl.sda.wwa5.lab.dao.OrdersDao;
 import pl.sda.wwa5.lab.dao.WarehouseDao;
 import pl.sda.wwa5.lab.view.ProductsConsoleView;
 
@@ -22,6 +23,7 @@ public class Runner {
         }
 
         WarehouseDao warehouseDao = null;
+        OrdersDao ordersDao = null;
 
         try {
             warehouseDao = new WarehouseDao(new ProductConverter(), "./data/warehouse.csv");
@@ -44,8 +46,16 @@ public class Runner {
             int productID = Integer.valueOf(args[1]);
             int quantity = Integer.valueOf(args[2]);
             int orderId = -1;
+            Order order = null;
             if (args.length==4) {
                 orderId = Integer.valueOf(args[3]);
+                Optional<Order> optionalOrderId = ordersDao.findByOrderId(orderId);
+                if (optionalOrderId.isPresent()) {
+                    order = optionalOrderId.get();
+                } else {
+                    System.out.println("Brak zamówienia o tym id");
+                    System.exit(1);
+                }
             }
 
             Optional<Product> productOptional = warehouse.getProductById(productID);
@@ -53,7 +63,7 @@ public class Runner {
                 System.out.println("Nie znaleziono produktu");
                 System.exit(1);
             }
-            shop.buy(productOptional, quantity);
+            shop.buy(productOptional.get(), quantity, order);
         }
 
         //TODO action = ActionFactory.createAction(args); action.perform();
