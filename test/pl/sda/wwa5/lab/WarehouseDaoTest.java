@@ -2,6 +2,8 @@ package pl.sda.wwa5.lab;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.sda.wwa5.lab.converter.ProductConverter;
+import pl.sda.wwa5.lab.dao.WarehouseDao;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,7 +21,7 @@ public class WarehouseDaoTest {
 
     @Test
     public void odczytajWszystkie() throws Exception {
-        List<Product> result = dao.odczytajWszystkie();
+        List<Product> result = dao.getAllProducts();
         assertEquals(result.size(),2);
         assertEquals(result.get(1).getId(),2);
         assertEquals(result.get(1).getName(),"produktB");

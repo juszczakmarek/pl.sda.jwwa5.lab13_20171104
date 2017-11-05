@@ -1,4 +1,6 @@
-package pl.sda.wwa5.lab;
+package pl.sda.wwa5.lab.converter;
+
+import pl.sda.wwa5.lab.Product;
 
 import java.math.BigDecimal;
 

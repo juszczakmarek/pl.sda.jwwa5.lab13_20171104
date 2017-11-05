@@ -2,6 +2,8 @@ package pl.sda.wwa5.lab;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.sda.wwa5.lab.converter.ProductConverter;
+import pl.sda.wwa5.lab.dao.WarehouseDao;
 
 import java.util.List;
 
