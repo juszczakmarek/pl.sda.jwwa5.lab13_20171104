@@ -11,7 +11,7 @@ public class Shop {
         this.warehouse = warehouse;
     }
 
-    public List<Product> showProducts() throws FileNotFoundException {
+    public List<Product> showProducts() {
 
         return warehouse.showProductsForStore();
     }

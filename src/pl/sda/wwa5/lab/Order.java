@@ -12,4 +12,13 @@ public class Order {
     private BigDecimal totalAmount;
     private Map<Product, Integer> cart = new LinkedHashMap<>();
 
+    void addProduct(Product product, int quantity) {
+        if (cart.containsKey(product)) {
+            quantity += cart.get(product);
+        }
+        cart.put(product,quantity);
+    }
+
+
+
 }

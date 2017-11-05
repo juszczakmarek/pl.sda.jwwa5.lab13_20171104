@@ -2,8 +2,8 @@ package pl.sda.wwa5.lab;
 
 import pl.sda.wwa5.lab.dao.WarehouseDao;
 
-import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 public class Warehouse {
 
@@ -13,8 +13,12 @@ public class Warehouse {
         this.dao = dao;
     }
 
-    public List<Product> showProductsForStore() throws FileNotFoundException {
+    public List<Product> showProductsForStore() {
 
-        return dao.odczytajWszystkie();
+        return dao.getAllProducts();
+    }
+
+    public Optional<Product> getProductById(int productID) {
+        return dao.findProductById(productID);
     }
 }

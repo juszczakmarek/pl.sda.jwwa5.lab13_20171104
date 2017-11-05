@@ -21,7 +21,7 @@ public class WarehouseDaoTest {
 
     @Test
     public void odczytajWszystkie() throws Exception {
-        List<Product> result = dao.odczytajWszystkie();
+        List<Product> result = dao.getAllProducts();
         assertEquals(result.size(),2);
         assertEquals(result.get(1).getId(),2);
         assertEquals(result.get(1).getName(),"produktB");

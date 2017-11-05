@@ -12,6 +12,7 @@ public class ProductsConsoleView {
         this.products = products;
     }
 
+
     public void showProducts() {
 //        products.stream().forEach(product -> System.out.println(changeFormat(product)));
 //        products.stream().map(product -> changeFormat(product)).forEach(System.out::println);
