@@ -43,12 +43,17 @@ public class Runner {
             //TODO obiekt walidator
             int productID = Integer.valueOf(args[1]);
             int quantity = Integer.valueOf(args[2]);
-            Optional<Product> product = warehouse.getProductById(productID);
-            if (product.isPresent()) {
+            int orderId = -1;
+            if (args.length==4) {
+                orderId = Integer.valueOf(args[3]);
+            }
+
+            Optional<Product> productOptional = warehouse.getProductById(productID);
+            if (productOptional.isPresent()) {
                 System.out.println("Nie znaleziono produktu");
                 System.exit(1);
             }
-            shop.buy(product, quantity);
+            shop.buy(productOptional, quantity);
         }
 
         //TODO action = ActionFactory.createAction(args); action.perform();
