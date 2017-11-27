@@ -1,5 +1,7 @@
 package pl.sda.wwa5.lab;
 
+import pl.sda.wwa5.lab.dao.OrdersDao;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Optional;
@@ -7,9 +9,11 @@ import java.util.Optional;
 public class Shop {
 
     private Warehouse warehouse;
+    private OrdersDao ordersDao;
 
-    public Shop(Warehouse warehouse) {
+    public Shop(Warehouse warehouse, OrdersDao ordersDao) {
         this.warehouse = warehouse;
+        this.ordersDao = ordersDao;
     }
 
     public List<Product> showProducts() {
@@ -17,10 +21,18 @@ public class Shop {
         return warehouse.showProductsForStore();
     }
 
-    public int buy(Optional<Product> productOptional, int quantity) {
+    public int buy(Product product, int quantity, Order order) {
         //zamowienie
         //sprawdzicy czy jest zamowienie
         //stworzenie nowego zamowienia
-        return 0;
+        if (checkIfProductIsAvailabl(product)) {
+            order.addProduct(product, quantity);
+            ordersDao.writeOrderToFile(order);
+        }
+        return order.getId();
+    }
+
+    private boolean checkIfProductIsAvailabl(Product product) {
+        return true;
     }
 }

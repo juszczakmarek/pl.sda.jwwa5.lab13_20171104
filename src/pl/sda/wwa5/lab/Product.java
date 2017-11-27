@@ -46,15 +46,15 @@ public class Product {
         Product product = (Product) o;
 
         if (id != product.id) return false;
-        if (!name.equals(product.name)) return false;
-        return price.equals(product.price);
+        if (name != null ? !name.equals(product.name) : product.name != null) return false;
+        return price != null ? price.equals(product.price) : product.price == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + price.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
         return result;
     }
 

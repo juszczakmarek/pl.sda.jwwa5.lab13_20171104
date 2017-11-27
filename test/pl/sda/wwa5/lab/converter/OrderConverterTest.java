@@ -1,15 +1,15 @@
 package pl.sda.wwa5.lab.converter;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.junit.Before;
 import org.junit.Test;
 import pl.sda.wwa5.lab.Order;
 import pl.sda.wwa5.lab.Product;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
+import static javafx.scene.input.KeyCode.H;
 import static org.junit.Assert.*;
 
 public class OrderConverterTest {
@@ -23,6 +23,21 @@ public class OrderConverterTest {
 
     @Test
     public void parseLineToOrder() throws Exception {
+        String orderLine = "4,5,6,7.77,10,1,20,2";
+
+        Order order = orderConverter.parseLineToOrder(orderLine);
+
+
+        assertTrue(order.getId()==4);
+        assertTrue(order.getOrderPlacedDate()==5);
+        assertTrue(order.getOrderFullfillDate()==6);
+        assertEquals(order.getTotalAmount(),new BigDecimal("7.77"));
+        assertTrue(order.getCart().size()==2);
+
+        Set<Product> productSet = new HashSet<>();
+        productSet.add(new Product(10,null,null));
+        productSet.add(new Product(20,null,null));
+        assertTrue(order.getCart().keySet().containsAll(productSet));
     }
 
     @Test
@@ -37,7 +52,7 @@ public class OrderConverterTest {
 
         String line = orderConverter.parseOrderToLine(order);
 
-        assertEquals("1,2,3,9.99,",line);
+        assertEquals("1,2,3,9.99",line);
     }
 
     @Test
